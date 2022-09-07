@@ -92,8 +92,9 @@ public class GuiMain {
         GuiListener.showFormWindow(player,window, GuiType.ManagerRemoveBanPlayer);
     }
 
+    //玩家UI
     public static void showPlayerMainMenu(Player player){
-        FormWindowSimple window = new FormWindowSimple("封禁系统","您好，[%level%] %player%,请选择您需要的功能");
+        FormWindowSimple window = new FormWindowSimple("封禁系统","您好，"+player.getName()+",请选择您需要的功能");
         window.addButton(new ElementButton("举报玩家"));
         /*
         window.addButton(new ElementButton("通知"));
@@ -137,18 +138,24 @@ public class GuiMain {
     }
 
     public static void showPlayerReportMenu(Player player){
-        FormWindowCustom window = new FormWindowCustom("封禁系统 - 举报玩家");
-        window.addElement(new ElementInput("请输入你要举报的玩家"));
+        //FormWindowCustom window = new FormWindowCustom("封禁系统 - 举报玩家");
+        FormWindowCustom window = new FormWindowCustom("举报玩家");
+        window.addElement(new ElementInput("举报说明:\n- 本举报功能仅用于举报外挂和言语辱骂，将不受理挂机、队友不配合等行为" +
+                "\n- 使用手柄游戏是被允许的" +
+                "\n- 大厅飞行，属于VIP+特权功能" +
+                "\n- 大厅TNT炸图，属于MVP++特权功能" +
+                "\n- 游戏内举报可能处理不及时，因此还可以进行录屏，并通过光达智造微信公众号举报，处理效率百分百！\n" +
+                "\n请键入你要举报的玩家"));
         ElementDropdown dropdown = new ElementDropdown("请选择举报类型");
         Config config = new Config(MainClass.path+"/config.yml");
-        List<String> strings = new ArrayList<>(config.getStringList("举报类型"));
+        List<String> strings = new ArrayList<>(config.getStringList("违规类型"));
         if(strings != null && strings.size() > 0) {
             for (String s: strings){
                 dropdown.addOption(s);
             }
         }
         window.addElement(dropdown);
-        window.addElement(new ElementInput("理由"));
+        window.addElement(new ElementInput("举报原因"));
         window.addElement(new ElementToggle("是否匿名举报"));
         GuiListener.showFormWindow(player,window, GuiType.PlayerReport);
     }

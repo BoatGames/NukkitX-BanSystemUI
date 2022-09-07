@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class MainClass extends PluginBase {
     public static String path;
     public static MainClass plugin;
+    public static boolean usingSqlDataBase;
 
     @Override
     public void onLoad() {

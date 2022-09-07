@@ -27,7 +27,7 @@ public class EventListener implements Listener {
                 config.remove("pardonDate");
                 config.save();
             } else {
-                event.getPlayer().kick("\n [BanSystem] 解封时间: " + config.getString("pardonDate"));
+                event.getPlayer().kick("\n [封禁系统] 解封时间: " + config.getString("pardonDate"));
             }
         }
         //封禁

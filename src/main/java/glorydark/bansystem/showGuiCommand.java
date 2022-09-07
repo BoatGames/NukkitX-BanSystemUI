@@ -7,7 +7,7 @@ import glorydark.bansystem.gui.GuiMain;
 
 public class showGuiCommand extends Command {
     public showGuiCommand() {
-        super("report","Start to use it!", "/report");
+        super("report","在游戏房间内举报违规玩家!", "/report");
     }
 
     @Override
@@ -16,7 +16,8 @@ public class showGuiCommand extends Command {
             if(commandSender.isOp()){
                 GuiMain.showManageMainMenu((Player) commandSender);
             }else{
-                GuiMain.showPlayerMainMenu((Player) commandSender);
+               //GuiMain.showPlayerMainMenu((Player) commandSender);
+                GuiMain.showPlayerReportMenu((Player) commandSender);
             }
         }else{
             commandSender.sendMessage("请在游戏内使用！");
